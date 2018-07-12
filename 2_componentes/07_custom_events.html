@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js</title>
+    <style>
+        .alerta{
+            width: 300px;
+            border-radius: 15px;
+            background-color: lightgray;
+            border: 1px solid white;
+            box-shadow: 1px 1px 2px gray;
+            font-family: sans-serif;
+            position: absolute;
+        }
+
+        .alerta__header{
+            border-bottom: 1px solid white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .alerta__contenido{
+            font-size: 14px;
+            padding: 20px;
+        }
+
+        .alerta__footer{
+            border-top: 1px solid white;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        .alerta--error{
+            background-color: indianred;
+        }
+
+        .alerta--advertencia{
+            background-color: lightgoldenrodyellow;
+        }
+
+        .alerta--exito{
+            background-color: lightgreen;
+        }
+
+        .alerta--arriba-izquierda{
+            left: 0;
+            top: 0;
+        }
+
+        .alerta--abajo-izquierda{
+            left: 0;
+            bottom: 0;
+        }
+
+        .alerta--arriba-derecha{
+            right: 0;
+            top: 0;
+        }
+
+        .alerta--abajo-derecha{
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <button @click="mostrarExito = true">Exito</button>
+        <button @click="mostrarError = true">Error</button>
+        <button @click="mostrarAdvertencia = true">Advertencia</button>
+
+        <alerta @ocultar="mostrarExito = false" v-show="mostrarExito" tipo="alerta--exito" posicion="alerta--arriba-derecha">
+            <template slot="header">Todo ok :)</template>
+            <template>Este es el nuevo contenido del alerta...</template>
+            <template slot="footer">Puedes continuar con normalidad</template>
+        </alerta>
+
+        <alerta @ocultar="mostrarError = false" v-show="mostrarError" tipo="alerta--error" posicion="alerta--arriba-izquierda">
+            <template slot="header">Error fatal !!</template>
+            <template>Este esdftenido del alerta...</template>
+            <template slot="footer">RIP</template>
+        </alerta>
+
+        <alerta @ocultar="mostrarAdvertencia = false" v-show="mostrarAdvertencia" tipo="alerta--advertencia" posicion="alerta--abajo-izquierda">
+            <template slot="header">Atención !!</template>
+            <template>Este es el nuevo contenido del alerta...</template>
+            <template slot="footer">Puedes continuar con normalidad</template>
+        </alerta>
+
+        <pre>{{ $data }}</pre>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="07_custom_events.js"></script>
+</body>
+</html>
