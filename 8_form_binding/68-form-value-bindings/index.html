@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        #app{
+            width: 60%;
+        }
+
+        form > * {
+            display: block;
+            margin: .3em 0;
+            width: 100%;
+        }
+        input[type=checkbox],
+        input[type=radio],
+        input[type=radio] ~ label{
+            display: inline-block;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Checkbox -->
+        <input type="checkbox" v-model="checkbox" :true-value="a" :false-value="b">
+
+        <!-- Radio -->
+        <!-- <input type="radio" v-model="radio" :value="a"> -->
+        <input type="radio" v-model="radio" :value="[1,2,3,4,5,6]">
+
+        <!-- Select -->
+        <select v-model="select">
+            <option :value="b">juan</option>
+        </select>
+
+        <hr>
+        <pre>{{ $data }}</pre>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checkbox: false,
+                radio: null,
+                select: null,
+                a: {estado: 'checked'},
+                b: {estado: 'unchecked'},
+            }
+        })
+    </script>
+</body>
+</html>

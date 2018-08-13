@@ -17,6 +17,15 @@
 <script>
     import {mixin} from './mixins';
     export default {
-        mixins: [mixin]     
+        created() {
+            console.log('Created desde el componente');       
+            this.saludar();     
+        },
+        mixins: [mixin],
+        methods: {
+            saludar() {
+                alert('Hola desde el componente');
+            }
+        }
     }
 </script>

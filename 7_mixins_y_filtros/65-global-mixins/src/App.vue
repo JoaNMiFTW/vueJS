@@ -17,6 +17,10 @@
 <script>
     import {mixin} from './mixins';
     export default {
-        mixins: [mixin]     
+        created() {
+            console.log('Created desde el componente');           
+        },
+        mixins: [mixin],
+        nombre: 'App.vue'
     }
 </script>
